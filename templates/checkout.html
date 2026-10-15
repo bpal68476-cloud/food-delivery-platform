@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | Foodie{% endblock %}
+
+{% block content %}
+
+<section class="checkout-page">
+
+    <div class="checkout-heading">
+        <p class="hero-tag">ALMOST THERE!</p>
+        <h1>Checkout 🛍️</h1>
+        <p>Review your order and enter your delivery address.</p>
+    </div>
+
+    <div class="checkout-layout">
+
+        <div class="checkout-items-section">
+            <h2>Your Items</h2>
+
+            <div class="checkout-items">
+                {% for item in items %}
+                    <div class="checkout-item">
+
+                        <div class="checkout-food-icon">🍽️</div>
+
+                        <div class="checkout-item-info">
+                            <h3>{{ item.name }}</h3>
+                            <p>₹{{ "%.2f"|format(item.price) }} each</p>
+                            <p>Quantity: {{ item.quantity }}</p>
+                        </div>
+
+                        <strong>
+                            ₹{{ "%.2f"|format(item.subtotal) }}
+                        </strong>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="checkout-right">
+
+            <div class="checkout-summary">
+                <h2>Order Summary</h2>
+
+                <div class="checkout-summary-row">
+                    <span>Food Subtotal</span>
+                    <span>₹{{ "%.2f"|format(subtotal) }}</span>
+                </div>
+
+                <div class="checkout-summary-row">
+                    <span>Delivery Fee</span>
+                    <span>₹{{ "%.2f"|format(delivery_fee) }}</span>
+                </div>
+
+                <div class="checkout-summary-row">
+                    <span>Tax</span>
+                    <span>₹{{ "%.2f"|format(tax_amount) }}</span>
+                </div>
+
+                <div class="checkout-summary-row discount-row">
+                    <span>Discount</span>
+                    <span>− ₹{{ "%.2f"|format(discount_amount) }}</span>
+                </div>
+
+                <div class="checkout-total">
+                    <span>Total Payable</span>
+                    <strong>₹{{ "%.2f"|format(total) }}</strong>
+                </div>
+            </div>
+
+            <div class="address-card">
+                <h2>Delivery Address 📍</h2>
+                <p>Where should we deliver your food?</p>
+
+                <form method="POST" action="{{ url_for('auth.checkout') }}">
+
+                    <div class="form-group">
+                        <label for="delivery_address">Full Address</label>
+                        <textarea
+                            id="delivery_address"
+                            name="delivery_address"
+                            rows="4"
+                            placeholder="House no., street, area, city and PIN code"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="auth-button">
+                        Place Order · ₹{{ "%.2f"|format(total) }}
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="page-links">
+        <a href="{{ url_for('auth.cart') }}">← Back to Cart</a>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,1197 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffaf5;
+    color: #292524;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: white;
+    border-bottom: 1px solid #f0e8e0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #292524;
+    text-decoration: none;
+}
+
+.logo span,
+.hero span {
+    color: #f15a24;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-links a,
+.home-actions a {
+    text-decoration: none;
+    color: #57534e;
+    font-weight: 600;
+}
+
+.nav-links a:hover,
+.home-actions a:hover {
+    color: #f15a24;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 24px;
+}
+
+.hero {
+    padding: 55px 35px;
+    background: #fff0e5;
+    border-radius: 20px;
+    margin-bottom: 45px;
+}
+
+.hero-tag {
+    color: #e4511c;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin: 12px 0;
+}
+
+.hero > p:last-child {
+    color: #78716c;
+    margin-top: 12px;
+}
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+}
+
+.section-heading p {
+    color: #78716c;
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.restaurant-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid #f0e8e0;
+    border-radius: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #29252412;
+}
+
+.restaurant-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.restaurant-card h3 {
+    margin-bottom: 8px;
+}
+
+.restaurant-card h3 a {
+    color: #292524;
+    text-decoration: none;
+}
+
+.restaurant-card h3 a:hover {
+    color: #f15a24;
+}
+
+.restaurant-card p {
+    color: #78716c;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #f15a24;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #d94716;
+}
+
+.empty-state {
+    text-align: center;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 16px;
+    border: 1px solid #f0e8e0;
+}
+
+.empty-state span {
+    font-size: 40px;
+}
+
+.empty-state p {
+    color: #78716c;
+}
+
+.home-actions {
+    display: flex;
+    gap: 22px;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #f0e8e0;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 16px 5%;
+        align-items: flex-start;
+        gap: 14px;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .container {
+        padding: 20px 16px;
+    }
+
+    .hero {
+        padding: 35px 22px;
+    }
+}
+
+
+
+
+/* Login and Register Pages */
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 12px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #f0e8e0;
+    box-shadow: 0 12px 35px #2925240d;
+}
+
+
+.auth-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff0e5;
+    border-radius: 16px;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.auth-card h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.auth-subtitle {
+    color: #78716c;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #e7ddd4;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #f15a24;
+    box-shadow: 0 0 0 3px #f15a241a;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 13px;
+    background: #f15a24;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    background: #d94716;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #78716c;
+}
+
+.auth-footer a {
+    color: #f15a24;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    padding: 12px;
+    margin-bottom: 20px;
+    background: #fff0f0;
+    color: #b42318;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #e7ddd4;
+    border-radius: 9px;
+    background: white;
+    font-size: 15px;
+    color: #292524;
+    outline: none;
+}
+
+.form-group select:focus {
+    border-color: #f15a24;
+    box-shadow: 0 0 0 3px #f15a241a;
+}
+
+
+/* Restaurant Menu */
+
+.menu-hero {
+    padding: 40px 32px;
+    background: #fff0e5;
+    border-radius: 18px;
+    margin-bottom: 38px;
+}
+
+.menu-hero h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    margin: 8px 0;
+}
+
+.menu-hero > p:last-child {
+    color: #78716c;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 23px;
+    border: 1px solid #f0e8e0;
+    border-radius: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #29252412;
+}
+
+.food-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110px;
+    background: #fff5ec;
+    border-radius: 12px;
+    font-size: 48px;
+    margin-bottom: 18px;
+}
+
+.menu-card h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.food-description {
+    color: #78716c;
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.menu-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid #f0e8e0;
+}
+
+.food-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e4511c;
+}
+
+.menu-card-bottom .btn {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.page-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 32px;
+}
+
+.page-links a {
+    color: #e4511c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.page-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .menu-hero {
+        padding: 30px 22px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Shopping Cart */
+
+.cart-heading {
+    margin-bottom: 30px;
+}
+
+.cart-heading h1 {
+    font-size: 36px;
+    margin: 8px 0;
+}
+
+.cart-heading > p:last-child {
+    color: #78716c;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #f0e8e0;
+    border-radius: 15px;
+}
+
+.cart-food-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 75px;
+    height: 75px;
+    background: #fff0e5;
+    border-radius: 12px;
+    font-size: 32px;
+}
+
+.cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-info h3 {
+    overflow-wrap: anywhere;
+    margin-bottom: 5px;
+}
+
+.cart-price {
+    color: #78716c;
+    font-size: 14px;
+}
+
+.cart-subtotal {
+    color: #e4511c;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.cart-item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px;
+    border: 1px solid #f0e8e0;
+    border-radius: 9px;
+}
+
+.quantity-control form {
+    display: flex;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background: #fff0e5;
+    color: #e4511c;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.quantity-control span {
+    min-width: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.remove-btn {
+    border: none;
+    background: transparent;
+    color: #c0392b;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+.cart-summary {
+    padding: 25px;
+    background: white;
+    border: 1px solid #f0e8e0;
+    border-radius: 15px;
+}
+
+.cart-summary h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+}
+
+.summary-row,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.summary-row {
+    color: #78716c;
+    padding-bottom: 18px;
+}
+
+.summary-total {
+    border-top: 1px solid #f0e8e0;
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.summary-total strong {
+    color: #e4511c;
+    font-size: 22px;
+}
+
+.checkout-btn {
+    display: block;
+    padding: 13px;
+    text-align: center;
+    background: #f15a24;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.checkout-btn:hover {
+    background: #d94716;
+}
+
+.continue-link {
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    color: #e4511c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cart-empty .btn {
+    margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .cart-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .cart-food-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 25px;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 12px;
+        border-top: 1px solid #f0e8e0;
+    }
+}
+
+
+/* Checkout Page */
+
+.checkout-heading {
+    margin-bottom: 30px;
+}
+
+.checkout-heading h1 {
+    font-size: 36px;
+    margin: 8px 0;
+}
+
+.checkout-heading > p:last-child {
+    color: #78716c;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+
+.checkout-items-section > h2 {
+    margin-bottom: 18px;
+}
+
+.checkout-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    background: white;
+    border: 1px solid #f0e8e0;
+    border-radius: 13px;
+}
+
+.checkout-food-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    background: #fff0e5;
+    border-radius: 11px;
+    font-size: 27px;
+}
+
+.checkout-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.checkout-item-info h3 {
+    overflow-wrap: anywhere;
+    margin-bottom: 4px;
+}
+
+.checkout-item-info p {
+    font-size: 14px;
+    color: #78716c;
+}
+
+.checkout-item > strong {
+    color: #e4511c;
+    white-space: nowrap;
+}
+
+.checkout-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkout-summary,
+.address-card {
+    background: white;
+    padding: 24px;
+    border: 1px solid #f0e8e0;
+    border-radius: 15px;
+}
+
+.checkout-summary h2,
+.address-card h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.checkout-summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    color: #57534e;
+}
+
+.discount-row {
+    color: #18864b;
+}
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #f0e8e0;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.checkout-total strong {
+    color: #e4511c;
+    font-size: 22px;
+}
+
+.address-card > p {
+    color: #78716c;
+    font-size: 14px;
+    margin-top: -12px;
+    margin-bottom: 22px;
+}
+
+.address-card textarea {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e7ddd4;
+    border-radius: 9px;
+    font: inherit;
+    resize: vertical;
+    outline: none;
+}
+
+.address-card textarea:focus {
+    border-color: #f15a24;
+    box-shadow: 0 0 0 3px #f15a241a;
+}
+
+.address-card .auth-button {
+    margin-top: 4px;
+}
+
+@media (max-width: 800px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-item {
+        flex-wrap: wrap;
+    }
+
+    .checkout-item > strong {
+        margin-left: auto;
+    }
+
+    .checkout-summary,
+    .address-card {
+        padding: 18px;
+    }
+}
+
+
+/* Order Success Page */
+
+.success-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 35px 12px;
+}
+
+.success-card {
+    width: 100%;
+    max-width: 580px;
+    padding: 38px;
+    text-align: center;
+    background: white;
+    border: 1px solid #f0e8e0;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px #2925240d;
+}
+
+.success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #e5f8ec;
+    color: #168447;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.success-tag {
+    color: #168447;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.success-card h1 {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.success-message {
+    color: #78716c;
+    margin-bottom: 28px;
+}
+
+.order-details {
+    padding: 8px 18px;
+    margin-bottom: 25px;
+    background: #fffaf5;
+    border: 1px solid #f0e8e0;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.order-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0e8e0;
+}
+
+.order-detail-row:last-child {
+    border-bottom: none;
+}
+
+.order-detail-row > span:first-child {
+    color: #78716c;
+}
+
+.success-total {
+    color: #e4511c;
+    font-size: 19px;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    background: #fff0d6;
+    color: #995600;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.success-primary-btn {
+    display: block;
+    padding: 13px;
+    background: #f15a24;
+    color: white;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.success-primary-btn:hover {
+    background: #d94716;
+}
+
+.success-secondary-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #e4511c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.success-secondary-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .success-card {
+        padding: 25px 18px;
+    }
+
+    .success-card h1 {
+        font-size: 25px;
+    }
+}
+
+
+/* My Orders Page */
+
+.orders-heading {
+    margin-bottom: 30px;
+}
+
+.orders-heading h1 {
+    font-size: 36px;
+    margin: 8px 0;
+}
+
+.orders-heading > p:last-child {
+    color: #78716c;
+}
+
+.orders-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border: 1px solid #f0e8e0;
+    border-radius: 15px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.orders-table th {
+    padding: 17px 18px;
+    background: #fff0e5;
+    color: #6b3a25;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.orders-table td {
+    padding: 18px;
+    border-top: 1px solid #f0e8e0;
+    font-size: 14px;
+}
+
+.orders-table tbody tr:hover {
+    background: #fffaf5;
+}
+
+.order-id {
+    font-weight: bold;
+    color: #e4511c;
+}
+
+.order-restaurant {
+    font-weight: 600;
+}
+
+.order-amount {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.order-date {
+    color: #78716c;
+    white-space: nowrap;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.status-placed {
+    color: #995600;
+    background: #fff0d6;
+}
+
+.status-accepted {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.status-prepared {
+    color: #7e22ce;
+    background: #f3e8ff;
+}
+
+.status-picked-up {
+    color: #0369a1;
+    background: #e0f2fe;
+}
+
+.status-delivered {
+    color: #168447;
+    background: #e5f8ec;
+}
+
+.status-cancelled {
+    color: #b42318;
+    background: #fee4e2;
+}
+
+.status-refunded {
+    color: #57534e;
+    background: #e7e5e4;
+}
+
+.orders-empty {
+    padding: 45px 20px;
+}
+
+.orders-empty .btn {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .orders-heading h1 {
+        font-size: 30px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 14px 12px;
+    }
+}
+
+
+/* Restaurant dashboard */
+
+.restaurant-dashboard {
+    padding: 20px 0 40px;
+}
+
+.dashboard-heading {
+    margin-bottom: 35px;
+}
+
+.dashboard-heading h1 {
+    margin: 10px 0;
+    font-size: clamp(28px, 4vw, 38px);
+    color: #252525;
+}
+
+.dashboard-heading > p:last-child,
+.dashboard-section-heading p {
+    color: #777;
+    margin-top: 8px;
+}
+
+.dashboard-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dashboard-section-heading h2 {
+    font-size: 23px;
+    color: #292929;
+}
+
+.orders-count {
+    background: #fff0e8;
+    color: #d95724;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.restaurant-orders-table th,
+.restaurant-orders-table td {
+    vertical-align: middle;
+}
+
+.restaurant-order-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 125px;
+}
+
+.restaurant-order-actions form {
+    margin: 0;
+}
+
+.action-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.action-btn:hover {
+    opacity: 0.82;
+}
+
+.accept-btn {
+    background: #e1f6e8;
+    color: #18743a;
+}
+
+.reject-btn {
+    background: #ffe7e7;
+    color: #bd3030;
+}
+
+.prepare-btn {
+    background: #fff0d9;
+    color: #975a00;
+}
+
+.no-action {
+    color: #888;
+    font-size: 12px;
+}
+
+.dashboard-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-section-heading {
+        align-items: flex-start;
+    }
+
+    .orders-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .restaurant-orders-table {
+        min-width: 850px;
+    }
+
+    .dashboard-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

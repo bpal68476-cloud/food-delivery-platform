@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Foodie{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <p class="hero-tag">FRESH • TASTY • DELIVERED</p>
+    <h1>Good food, <span>good mood.</span></h1>
+    <p>Discover restaurants and order your favourite food.</p>
+</section>
+
+<section class="restaurants-section">
+    <div class="section-heading">
+        <div>
+            <h2>Available Restaurants</h2>
+            <p>Choose your favourite place to eat.</p>
+        </div>
+    </div>
+
+    {% if restaurants %}
+        <div class="restaurant-grid">
+            {% for restaurant in restaurants %}
+                <div class="restaurant-card">
+                    <div class="restaurant-icon">🍽️</div>
+
+                    <h3>
+                        <a href="{{ url_for('auth.restaurant_menu', restaurant_id=restaurant.id) }}">
+                            {{ restaurant.name }}
+                        </a>
+                    </h3>
+
+                    <p>
+                        {{ restaurant.description or "No description available" }}
+                    </p>
+
+                    <a class="btn" href="{{ url_for('auth.restaurant_menu', restaurant_id=restaurant.id) }}">
+                        Explore Menu →
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <span>🍽️</span>
+            <h3>No restaurants available</h3>
+            <p>Please check back later.</p>
+        </div>
+    {% endif %}
+</section>
+
+<div class="home-actions">
+    <a href="{{ url_for('auth.my_orders') }}">My Orders</a>
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+</div>
+
+{% endblock %}

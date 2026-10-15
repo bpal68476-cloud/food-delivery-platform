@@ -1,0 +1,68 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ restaurant.name }} | Foodie{% endblock %}
+
+{% block content %}
+
+<section class="menu-hero">
+    <p class="hero-tag">WELCOME TO</p>
+    <h1>{{ restaurant.name }}</h1>
+    <p>{{ restaurant.description or "Welcome to our restaurant!" }}</p>
+</section>
+
+<section class="menu-section">
+
+    <div class="section-heading">
+        <h2>Explore Our Menu</h2>
+        <p>Find something delicious for your next meal.</p>
+    </div>
+
+    {% if menu_items %}
+        <div class="menu-grid">
+
+            {% for item in menu_items %}
+                <div class="menu-card">
+
+                    <div class="food-icon">🍽️</div>
+
+                    <h3>{{ item.name }}</h3>
+
+                    <p class="food-description">
+                        {{ item.description or "Delicious food, freshly prepared." }}
+                    </p>
+
+                    <div class="menu-card-bottom">
+                        <span class="food-price">
+                            ₹{{ "%.2f"|format(item.price) }}
+                        </span>
+
+                        <form action="{{ url_for('auth.add_to_cart', item_id=item.id) }}"
+                              method="POST">
+                            <button type="submit" class="btn">
+                                + Add
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+        <div class="empty-state">
+            <span>🍲</span>
+            <h3>Menu coming soon!</h3>
+            <p>No food items are available right now.</p>
+        </div>
+    {% endif %}
+
+</section>
+
+<div class="page-links">
+    <a href="{{ url_for('auth.home') }}">← Back to Restaurants</a>
+    <a href="{{ url_for('auth.my_orders') }}">My Orders</a>
+</div>
+
+{% endblock %}

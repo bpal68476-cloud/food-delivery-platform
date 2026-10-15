@@ -1,0 +1,117 @@
+
+{% extends "base.html" %}
+
+{% block title %}Restaurant Dashboard | Foodie{% endblock %}
+
+{% block content %}
+<section class="restaurant-dashboard">
+
+    <div class="dashboard-heading">
+        <p class="hero-tag">RESTAURANT PANEL</p>
+        <h1>Restaurant Dashboard 🍽️</h1>
+        <p>Manage incoming orders and update their status.</p>
+    </div>
+
+    <div class="dashboard-section-heading">
+        <div>
+            <h2>Incoming Orders</h2>
+            <p>Review orders and take the next action.</p>
+        </div>
+
+        <span class="orders-count">
+            {{ orders|length }} orders
+        </span>
+    </div>
+
+    {% if orders %}
+        <div class="orders-table-wrapper">
+            <table class="orders-table restaurant-orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Restaurant</th>
+                        <th>Status</th>
+                        <th>Total Amount</th>
+                        <th>Order Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td class="order-id">
+                                #{{ order.order_id }}
+                            </td>
+
+                            <td class="order-restaurant">
+                                {{ order.restaurant_name }}
+                            </td>
+
+                            <td>
+                                <span class="status-badge status-{{ order.status|lower|replace('_', '-')|replace(' ', '-') }}">
+                                    {{ order.status|replace('_', ' ')|title }}
+                                </span>
+                            </td>
+
+                            <td class="order-amount">
+                                ₹{{ "%.2f"|format(order.total_amount) }}
+                            </td>
+
+                            <td class="order-date">
+                                {{ order.created_at }}
+                            </td>
+
+                            <td>
+                                <div class="restaurant-order-actions">
+                                    {% if order.status == 'placed' %}
+
+                                        <form method="POST"
+                                              action="{{ url_for('restaurant.accept_order', order_id=order.order_id) }}">
+                                            <button type="submit" class="action-btn accept-btn">
+                                                Accept
+                                            </button>
+                                        </form>
+
+                                        <form method="POST"
+                                              action="{{ url_for('restaurant.reject_order', order_id=order.order_id) }}">
+                                            <button type="submit" class="action-btn reject-btn">
+                                                Reject
+                                            </button>
+                                        </form>
+
+                                    {% elif order.status == 'accepted' %}
+
+                                        <form method="POST"
+                                              action="{{ url_for('restaurant.prepare_order', order_id=order.order_id) }}">
+                                            <button type="submit" class="action-btn prepare-btn">
+                                                Mark as Prepared
+                                            </button>
+                                        </form>
+
+                                    {% else %}
+                                        <span class="no-action">No action available</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+        <div class="empty-state">
+            <span>📦</span>
+            <h3>No incoming orders</h3>
+            <p>New customer orders will appear here.</p>
+        </div>
+    {% endif %}
+
+    <div class="page-links dashboard-links">
+        <a href="{{ url_for('auth.home') }}">← Back to Home</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </div>
+
+</section>
+{% endblock %}

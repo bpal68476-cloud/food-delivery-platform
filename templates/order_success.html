@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+{% block title %}Order Confirmed | Foodie{% endblock %}
+
+{% block content %}
+
+<div class="success-wrapper">
+
+    <div class="success-card">
+
+        <div class="success-icon">✓</div>
+
+        <p class="success-tag">ORDER CONFIRMED</p>
+
+        <h1>Order Placed Successfully!</h1>
+
+        <p class="success-message">
+            Thank you for ordering with Foodie.
+            Your delicious food journey has started!
+        </p>
+
+        <div class="order-details">
+
+            <div class="order-detail-row">
+                <span>Order ID</span>
+                <strong>#{{ order_id }}</strong>
+            </div>
+
+            <div class="order-detail-row">
+                <span>Order Total</span>
+                <strong class="success-total">
+                    ₹{{ "%.2f"|format(total) }}
+                </strong>
+            </div>
+
+            <div class="order-detail-row">
+                <span>Status</span>
+                <span class="status-badge">Placed</span>
+            </div>
+
+        </div>
+
+        <a href="{{ url_for('auth.my_orders') }}" class="success-primary-btn">
+            View My Orders
+        </a>
+
+        <a href="{{ url_for('auth.home') }}" class="success-secondary-link">
+            Continue Exploring Restaurants
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

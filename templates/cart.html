@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}My Cart | Foodie{% endblock %}
+
+{% block content %}
+
+<section class="cart-page">
+
+    <div class="cart-heading">
+        <p class="hero-tag">YOUR SELECTION</p>
+        <h1>My Cart 🛒</h1>
+        <p>Review your items before placing your order.</p>
+    </div>
+
+    {% if items %}
+
+        <div class="cart-layout">
+
+            <div class="cart-items">
+                {% for item in items %}
+
+                    <div class="cart-item">
+
+                        <div class="cart-food-icon">🍽️</div>
+
+                        <div class="cart-item-info">
+                            <h3>{{ item.name }}</h3>
+
+                            <p class="cart-price">
+                                ₹{{ "%.2f"|format(item.price) }} each
+                            </p>
+
+                            <p class="cart-subtotal">
+                                Subtotal: ₹{{ "%.2f"|format(item.subtotal) }}
+                            </p>
+                        </div>
+
+                        <div class="cart-item-actions">
+
+                            <div class="quantity-control">
+                                <form action="{{ url_for('auth.decrease_cart_quantity', cart_item_id=item.id) }}"
+                                      method="POST">
+                                    <button type="submit" class="quantity-btn">−</button>
+                                </form>
+
+                                <span>{{ item.quantity }}</span>
+
+                                <form action="{{ url_for('auth.increase_cart_quantity', cart_item_id=item.id) }}"
+                                      method="POST">
+                                    <button type="submit" class="quantity-btn">+</button>
+                                </form>
+                            </div>
+
+                            <form action="{{ url_for('auth.remove_from_cart', cart_item_id=item.id) }}"
+                                  method="POST">
+                                <button type="submit" class="remove-btn">
+                                    Remove
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <aside class="cart-summary">
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Total Items</span>
+                    <span>{{ items|length }}</span>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <strong>₹{{ "%.2f"|format(total) }}</strong>
+                </div>
+
+                <a href="{{ url_for('auth.checkout') }}" class="checkout-btn">
+                    Proceed to Checkout →
+                </a>
+
+                <a href="{{ url_for('auth.home') }}" class="continue-link">
+                    Continue Shopping
+                </a>
+            </aside>
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state cart-empty">
+            <span>🛒</span>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't added any food yet.</p>
+
+            <a href="{{ url_for('auth.home') }}" class="btn">
+                Explore Restaurants
+            </a>
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

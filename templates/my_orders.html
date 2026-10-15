@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+{% block title %}My Orders | Foodie{% endblock %}
+
+{% block content %}
+
+<section class="orders-page">
+
+    <div class="orders-heading">
+        <p class="hero-tag">YOUR FOOD JOURNEY</p>
+        <h1>My Orders 📦</h1>
+        <p>Track your orders and check their latest status.</p>
+    </div>
+
+    {% if orders %}
+
+        <div class="orders-table-wrapper">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Restaurant</th>
+                        <th>Status</th>
+                        <th>Total Amount</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td class="order-id">#{{ order.id }}</td>
+
+                            <td class="order-restaurant">
+                                {{ order.restaurant_name }}
+                            </td>
+
+                            <td>
+                                <span class="status-badge status-{{ order.status|lower|replace(' ', '-') }}">
+                                    {{ order.status|replace('_', ' ')|title }}
+                                </span>
+                            </td>
+
+                            <td class="order-amount">
+                                ₹{{ "%.2f"|format(order.total_amount) }}
+                            </td>
+
+                            <td class="order-date">
+                                {{ order.created_at }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="empty-state orders-empty">
+            <span>📦</span>
+            <h3>No orders yet</h3>
+            <p>Your delicious food journey starts here.</p>
+
+            <a href="{{ url_for('auth.home') }}" class="btn">
+                Explore Restaurants
+            </a>
+        </div>
+
+    {% endif %}
+
+    <div class="page-links">
+        <a href="{{ url_for('auth.home') }}">← Back to Home</a>
+    </div>
+
+</section>
+
+{% endblock %}
